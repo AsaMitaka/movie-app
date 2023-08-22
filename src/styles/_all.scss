@@ -1,10 +1,80 @@
 @import './global';
 @import './variables/variables';
+@import './variables/mixin';
+@import './components/header';
+@import './components/movieelement';
+@import './components/tvserieselement';
+@import './components/footer';
 
-body {
-  width: 100vw;
-  height: 100vh;
+.wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    &__section {
+      @include wrapper;
+      display: flex;
+      flex-direction: column;
+
+      &--header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px 0;
+
+        &-title {
+          font-size: 54px;
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+
+        &-text {
+          width: 150px;
+        }
+      }
+
+      &--heading {
+        font-size: 32px;
+      }
+
+      &--movieblock {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 450px;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        padding: 20px 0;
+      }
+
+      &--tvseriesblock {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 180px;
+        grid-column-gap: 20px;
+        padding: 5px 0 20px;
+      }
+
+      &--btn {
+        align-self: center;
+        margin: 10px 0;
+        padding: 10px 40px;
+        font-size: 28px;
+        text-transform: uppercase;
+        background-color: white;
+        border: 3px solid black;
+        cursor: pointer;
+
+        &:hover {
+          color: white;
+          background-color: black;
+        }
+      }
+    }
+  }
 }
