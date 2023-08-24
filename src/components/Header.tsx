@@ -1,36 +1,25 @@
 import { Link } from 'react-router-dom';
+import logo from '../assets/HBO_Max_Logo.png';
 
 const Header = () => {
   return (
     <header className="header">
       <nav className="nav">
-        <ul className="nav__list show">
-          <li className="nav__list--li">
-            <Link to="/movies" className="nav__list--li-a">
-              movies
-            </Link>
-          </li>
-          <li className="nav__list--li">
-            <Link to="/series" className="nav__list--li-a">
-              tv shows
-            </Link>
-          </li>
-        </ul>
         <div className="nav__list">
           <Link to="/" className="nav__list--li-a">
-            <img src="#" alt="logo" className="nav__list--li-a--logo" />
+            <img src={logo} alt="logo" className="nav__list--li-a--logo" />
           </Link>
         </div>
-        <ul className="nav__list">
+        <ul className="nav__list show">
           <li className="nav__list--li">
-            <a href="#" className="nav__list--li-a">
-              find cinema
-            </a>
+            <Link to="/movie" className="nav__list--li-a">
+              Movies
+            </Link>
           </li>
           <li className="nav__list--li">
-            <a href="#" className="nav__list--li-a">
-              enter
-            </a>
+            <Link to="/show" className="nav__list--li-a">
+              TV shows
+            </Link>
           </li>
         </ul>
       </nav>

@@ -1,3 +1,5 @@
+import logo from '../assets/HBO_Max_Logo.png';
+
 const Footer = () => {
   return (
     <footer className="footer">
@@ -5,42 +7,12 @@ const Footer = () => {
         <ul className="nav__list">
           <li className="nav__list--li">
             <a href="#" className="nav__list--li-a">
-              instagram
-            </a>
-          </li>
-          <li className="nav__list--li">
-            <a href="#" className="nav__list--li-a">
-              home cinema
-            </a>
-          </li>
-          <li className="nav__list--li">
-            <a href="#" className="nav__list--li-a">
-              all cinema
-            </a>
-          </li>
-          <li className="nav__list--li">
-            <a href="#" className="nav__list--li-a">
-              subscribe
+              Instagram
             </a>
           </li>
           <li className="nav__list--li">
             <a href="#" className="nav__list--li-logo">
-              LOGO
-            </a>
-          </li>
-          <li className="nav__list--li">
-            <a href="#" className="nav__list--li-a">
-              blog
-            </a>
-          </li>
-          <li className="nav__list--li">
-            <a href="#" className="nav__list--li-a">
-              cinema by mood
-            </a>
-          </li>
-          <li className="nav__list--li">
-            <a href="#" className="nav__list--li-a">
-              account
+              <img src={logo} alt="" className="logo" />
             </a>
           </li>
           <li className="nav__list--li">

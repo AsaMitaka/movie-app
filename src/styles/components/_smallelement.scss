@@ -1,0 +1,30 @@
+.smallelement {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__img {
+  }
+
+  &__block {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 20px;
+    color: white;
+    background-color: rgba(158, 150, 150, 0.3);
+    text-decoration: none;
+    cursor: pointer;
+
+    &--title {
+      margin-bottom: 5px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    &--subtitle {
+      font-weight: 100;
+    }
+  }
+}

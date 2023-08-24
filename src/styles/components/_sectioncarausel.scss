@@ -1,0 +1,23 @@
+.main__section--carausel {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &-title {
+    @include wrapper;
+    color: white;
+    font-size: 24px;
+  }
+
+  &-block {
+    @include wrapper;
+
+    margin-top: 20px;
+    gap: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+  }
+}

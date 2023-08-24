@@ -1,0 +1,40 @@
+.bigelement {
+  width: 600px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__block {
+    border-radius: 15px;
+
+    &--img {
+      // width: 100%;
+      transform: translateY(-30%);
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__subblock {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: rgba(66, 62, 62, 0.5);
+    cursor: pointer;
+
+    &--title {
+      margin-bottom: 5px;
+      color: white;
+      font-size: 28px;
+    }
+
+    &--subtitle {
+      color: white;
+      font-size: 20px;
+      font-weight: 100;
+    }
+  }
+}

@@ -1,27 +1,15 @@
-import Footer from '../components/Footer';
 import Header from '../components/Header';
-import MovieElement from '../components/MovieElement';
+import Footer from '../components/Footer';
+import SectionCarausel from '../components/SectionCarausel';
 
-const Movie = () => {
+const Movies = () => {
   return (
     <div className="wrapper">
       <Header />
       <div className="main">
-        <section className="main__section">
-          <div className="main__section--header">
-            <h1 className="main__section--header-title">Good movie here</h1>
-            <div className="main__section--header-text">
-              we know, that you came to watch movie and select something to you
-            </div>
-          </div>
-
-          <div className="main__section--movieblock">
-            <MovieElement />
-            <MovieElement />
-            <MovieElement />
-            <MovieElement />
-          </div>
-          <button className="main__section--btn">more movie</button>
+        <section className="main__movies">
+          <h1 className="main__movies--title">Movies</h1>
+          <SectionCarausel />
         </section>
       </div>
       <Footer />
@@ -29,4 +17,4 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export default Movies;
