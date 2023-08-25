@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 
-const SmallElement = ({ item }) => {
+const SmallTvElement = ({ item }) => {
+  console.log(item);
+
   return (
     <div className="smallelement">
       <img
@@ -8,12 +10,12 @@ const SmallElement = ({ item }) => {
         alt={item?.title}
         className="smallelement__img"
       />
-      <Link to={`/${item.media_type}/${item.id}`} className="smallelement__block">
-        <div className="smallelement__block--title">{item.original_title}</div>
+      <Link to={`/show/${item.id}`} className="smallelement__block">
+        <div className="smallelement__block--title">{item.original_name}</div>
         <div className="smallelement__block--subtitle">Drama</div>
       </Link>
     </div>
   );
 };
 
-export default SmallElement;
+export default SmallTvElement;

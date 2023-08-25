@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
 
-const BigElement = () => {
+const BigElement = ({ item }) => {
   return (
     <div className="bigelement">
       <div className="bigelement__block">
         <img
-          src="https://www.movieposters.com/cdn/shop/products/a1628341cc57cd3929b51d7c8ee81f6e_4b3aa3ac-d907-4f06-a5e4-6102e7442fe6_480x.progressive.jpg?v=1573593758"
-          alt="img"
+          src={`https://image.tmdb.org/t/p/original/${item?.poster_path}`}
+          alt={item?.title}
           className="bigelement__block--img"
         />
       </div>
-      <Link to="/show/1" className="bigelement__subblock">
-        <h1 className="bigelement__subblock--title">Fast and Fury</h1>
+      <Link to={`/${item.media_type}/${item.id}`} className="bigelement__subblock">
+        <h1 className="bigelement__subblock--title">{item.original_title}</h1>
         <h2 className="bigelement__subblock--subtitle">Drama</h2>
       </Link>
     </div>

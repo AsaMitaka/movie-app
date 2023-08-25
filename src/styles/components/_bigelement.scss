@@ -6,12 +6,13 @@
   position: relative;
 
   &__block {
+    width: 100%;
     border-radius: 15px;
 
     &--img {
-      // width: 100%;
-      transform: translateY(-30%);
+      width: 600px;
       height: 100%;
+      transform: translateY(-30%);
       object-fit: cover;
     }
   }
