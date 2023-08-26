@@ -1,4 +1,4 @@
-interface tvShowElement {
+type TvShow = {
   adult: boolean;
   backdrop_path: string;
   first_air_data: string;
@@ -13,4 +13,11 @@ interface tvShowElement {
   poster_path: string;
   vote_average: number;
   vote_count: number;
+};
+
+interface PopularTvShowState {
+  items: TvShow[];
+  status: 'loading' | 'loaded' | 'rejected';
 }
+
+export { TvShow, PopularTvShowState };

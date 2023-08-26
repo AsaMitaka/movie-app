@@ -1,4 +1,4 @@
-interface movieElement {
+type Movie = {
   adult: boolean;
   backdrop_path: string;
   genres_ids: number[];
@@ -14,4 +14,11 @@ interface movieElement {
   video: boolean;
   vote_average: number;
   vote_count: number;
+};
+
+interface MovieShowState {
+  items: Movie[];
+  status: 'loading' | 'loaded' | 'rejected';
 }
+
+export { Movie, MovieShowState };
