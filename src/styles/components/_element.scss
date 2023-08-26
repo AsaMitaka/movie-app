@@ -1,16 +1,11 @@
-.smallelement {
-  width: 250px;
+.element {
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
 
-  @media screen and (max-width: 1200px) {
-    width: 100%;
-    height: 100%;
-  }
-
   &__img {
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 800px) {
       width: 100%;
     }
   }
@@ -25,6 +20,10 @@
     background-color: rgba(0, 0, 0, 0.3);
     text-decoration: none;
     cursor: pointer;
+
+    @media screen and (max-width: 450px) {
+      height: 200px;
+    }
 
     &--title {
       margin-bottom: 5px;

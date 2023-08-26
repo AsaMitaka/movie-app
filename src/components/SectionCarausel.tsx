@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import SmallElement from './SmallElement';
 import { fetchPopularMovies } from '../store/slices/popularMovies';
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Element from './Element';
 
 const SectionCarausel = () => {
   const dispatch = useDispatch();
@@ -27,12 +27,26 @@ const SectionCarausel = () => {
       <Swiper
         className="main__section--carausel-block"
         spaceBetween={20}
-        slidesPerView={window.innerWidth < 700 ? 1 : 6}
+        slidesPerView={9}
+        breakpoints={{
+          100: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 7,
+          },
+          1200: {
+            slidesPerView: 9,
+          },
+        }}
         onReachEnd={handleSwiperReachEnd}>
         {popularMovies &&
           popularMovies.map((item, index) => (
             <SwiperSlide key={index}>
-              <SmallElement item={item} />
+              <Element item={item} />
             </SwiperSlide>
           ))}
       </Swiper>

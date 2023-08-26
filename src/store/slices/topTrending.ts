@@ -1,15 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../services/api';
+import { Trending } from '../../types/trending';
 
-export const fetchTopTrending = createAsyncThunk('fetch/topTrending', async (page = 1) => {
+export const fetchTopTrending = createAsyncThunk('fetch/topTrending', async (page: number = 1) => {
   const { data } = await axios.get(`/trending/all/week?page=${page}`);
 
   return data;
 });
 
-const initialState = {
+const initialState: Trending = {
   items: [],
-  status: 'loading' | 'loaded' | 'rejected',
+  status: 'loading',
 };
 
 const topTrendingSlice = createSlice({
@@ -17,8 +18,7 @@ const topTrendingSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchTopTrending.pending, (state, action) => {
-      // state.items = [];
+    builder.addCase(fetchTopTrending.pending, (state) => {
       state.status = 'loading';
     });
     builder.addCase(fetchTopTrending.fulfilled, (state, action) => {
@@ -27,7 +27,7 @@ const topTrendingSlice = createSlice({
       state.items = [...state.items, ...results];
       state.status = 'loaded';
     });
-    builder.addCase(fetchTopTrending.rejected, (state, action) => {
+    builder.addCase(fetchTopTrending.rejected, (state) => {
       state.items = [];
       state.status = 'rejected';
     });

@@ -1,15 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../services/api';
+import { PopularTvShowState } from '../../types/tvShowElement';
 
-export const fetchPopularTvShow = createAsyncThunk('fetch/popularTvShow', async (page = 1) => {
-  const { data } = await axios.get(`trending/tv/week?page=${page}`);
+export const fetchPopularTvShow = createAsyncThunk(
+  'fetch/popularTvShow',
+  async (page: number = 1) => {
+    const { data } = await axios.get(`trending/tv/week?page=${page}`);
 
-  return data;
-});
+    return data;
+  },
+);
 
-const initialState = {
+const initialState: PopularTvShowState = {
   items: [],
-  status: 'loading' | 'loaded' | 'rejected',
+  status: 'loading',
 };
 
 const popularTvShowSlice = createSlice({
@@ -17,8 +21,7 @@ const popularTvShowSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchPopularTvShow.pending, (state, action) => {
-      // state.items = [];
+    builder.addCase(fetchPopularTvShow.pending, (state) => {
       state.status = 'loading';
     });
     builder.addCase(fetchPopularTvShow.fulfilled, (state, action) => {
@@ -27,7 +30,7 @@ const popularTvShowSlice = createSlice({
       state.items = [...state.items, ...results];
       state.status = 'loaded';
     });
-    builder.addCase(fetchPopularTvShow.rejected, (state, action) => {
+    builder.addCase(fetchPopularTvShow.rejected, (state) => {
       state.items = [];
       state.status = 'rejected';
     });

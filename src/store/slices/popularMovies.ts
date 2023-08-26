@@ -1,15 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../services/api';
+import { MovieShowState } from '../../types/movieElement';
 
-export const fetchPopularMovies = createAsyncThunk('fetch/popularMovies', async (page = 1) => {
-  const { data } = await axios.get(`/trending/movie/week?page=${page}`);
+export const fetchPopularMovies = createAsyncThunk(
+  'fetch/popularMovies',
+  async (page: number = 1) => {
+    const { data } = await axios.get(`/trending/movie/week?page=${page}`);
 
-  return data;
-});
+    return data;
+  },
+);
 
-const initialState = {
+const initialState: MovieShowState = {
   items: [],
-  status: 'loading' | 'loaded' | 'rejected',
+  status: 'loading',
 };
 
 const popularMoviesSlice = createSlice({
@@ -17,8 +21,7 @@ const popularMoviesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchPopularMovies.pending, (state, action) => {
-      // state.items = [];
+    builder.addCase(fetchPopularMovies.pending, (state) => {
       state.status = 'loading';
     });
     builder.addCase(fetchPopularMovies.fulfilled, (state, action) => {
@@ -27,7 +30,7 @@ const popularMoviesSlice = createSlice({
       state.items = [...state.items, ...results];
       state.status = 'loaded';
     });
-    builder.addCase(fetchPopularMovies.rejected, (state, action) => {
+    builder.addCase(fetchPopularMovies.rejected, (state) => {
       state.items = [];
       state.status = 'rejected';
     });

@@ -1,8 +1,7 @@
 @import './global';
 @import './variables/variables';
 @import './variables/mixin';
-@import './components/smallelement';
-@import './components/bigelement';
+@import './components/element';
 @import './components/header';
 @import './components/mainscreen';
 @import './components/sectionpopular';
@@ -10,6 +9,7 @@
 @import './components/show';
 @import './components/footer';
 @import 'swiper/css';
+@import './variables/swiper';
 
 .wrapper {
   display: flex;

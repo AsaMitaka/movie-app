@@ -5,19 +5,12 @@
   align-items: center;
 
   &-title {
-    @include wrapper;
     color: white;
     font-size: 24px;
   }
 
   &-block {
     @include wrapper;
-
-    @media screen and (max-width: 700px) {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
 
     margin-top: 20px;
     gap: 20px;

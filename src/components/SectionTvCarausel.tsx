@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchPopularTvShow } from '../store/slices/popularTvShow';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SmallTvElement from './SmallTvElement';
+import Element from './Element';
 
 const SectionTvCarausel = () => {
   const dispatch = useDispatch();
@@ -27,11 +27,25 @@ const SectionTvCarausel = () => {
       <Swiper
         className="main__section--carausel-block"
         spaceBetween={20}
-        slidesPerView={window.innerWidth < 700 ? 1 : 6}
+        slidesPerView={9}
+        breakpoints={{
+          100: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 7,
+          },
+          1200: {
+            slidesPerView: 9,
+          },
+        }}
         onReachEnd={handleSwiperReachEnd}>
         {popularTvShow.map((item, index) => (
           <SwiperSlide key={index}>
-            <SmallTvElement item={item} />
+            <Element item={item} />
           </SwiperSlide>
         ))}
       </Swiper>
