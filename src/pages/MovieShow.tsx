@@ -1,26 +1,29 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { MovieType } from '../types/movieElement';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import axios from '../services/api';
 
-const MovieShow = () => {
+const MovieShow: React.FC = () => {
   const { id } = useParams();
 
-  const [data, setData] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<MovieType | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getData = async () => {
-      const item = await axios.get(`https://api.themoviedb.org/3/movie/${id}`);
-      const itemData = item.data;
-      setData(itemData);
-      setLoading(false);
+      try {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`);
+        setData(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
 
     getData();
   }, []);
-  console.log(data);
 
   return (
     <div className="wrapper">
@@ -39,7 +42,7 @@ const MovieShow = () => {
               <div className="main__show--block">
                 <div className="main__show--block-left">
                   <p className="main__show--block-left--subinfo">2023 M 2h 30m</p>
-                  <h1 className="main__show--block-left--title">{data.title}</h1>
+                  <h1 className="main__show--block-left--title">{data?.title}</h1>
                   <div className="main__show--block-left--subtitle">
                     {data?.genres.map((item) => (
                       <span>{item.name} </span>

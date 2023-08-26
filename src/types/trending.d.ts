@@ -1,7 +1,7 @@
-import { Movie } from './movieElement';
-import { TvShow } from './tvShowElement';
+import { MovieType } from './movieElement';
+import { TvShowType } from './tvShowElement';
 
-type TrendingItem = Movie | TvShow;
+type TrendingItem = MovieType | TvShowType;
 
 interface Trending {
   items: TrendingItem[];

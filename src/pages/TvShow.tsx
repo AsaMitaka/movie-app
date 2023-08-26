@@ -1,23 +1,25 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { SeasonType, TvShowType } from '../types/tvShowElement';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import axios from '../services/api';
 
-const TvShow = () => {
+const TvShow: React.FC = () => {
   const { id } = useParams();
 
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState({});
+  const [data, setData] = useState<TvShowType | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const getData = async () => {
-      const item = await axios.get(`https://api.themoviedb.org/3/tv/${id}`);
-      const itemData = item.data;
-      console.log(itemData);
-
-      setData(itemData);
-      setLoading(false);
+      try {
+        const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}`);
+        setData(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
 
     getData();
@@ -78,7 +80,7 @@ const TvShow = () => {
 
 export default TvShow;
 
-const Seasons = ({ item }) => {
+const Seasons: React.FC<{ item: SeasonType }> = ({ item }) => {
   console.log(item);
 
   return (

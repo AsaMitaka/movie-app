@@ -1,4 +1,4 @@
-type Movie = {
+type MovieType = {
   adult: boolean;
   backdrop_path: string;
   genres_ids: number[];
@@ -17,8 +17,8 @@ type Movie = {
 };
 
 interface MovieShowState {
-  items: Movie[];
+  items: MovieType[];
   status: 'loading' | 'loaded' | 'rejected';
 }
 
-export { Movie, MovieShowState };
+export { MovieType, MovieShowState };

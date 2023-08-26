@@ -5,7 +5,7 @@ import SectionCarausel from '../components/SectionCarausel';
 import SectionTvCarausel from '../components/SectionTvCarausel';
 import Footer from '../components/Footer';
 
-const Main = () => {
+const Main: React.FC = () => {
   return (
     <div className="wrapper">
       <Header />

@@ -2,7 +2,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SectionCarausel from '../components/SectionCarausel';
 
-const Movies = () => {
+const Movies: React.FC = () => {
   return (
     <div className="wrapper">
       <Header />
