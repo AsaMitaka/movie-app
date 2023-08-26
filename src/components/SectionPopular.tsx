@@ -27,7 +27,7 @@ const SectionPopular = () => {
       <Swiper
         className="main__section--popular-block"
         spaceBetween={40}
-        slidesPerView={3}
+        slidesPerView={window.innerWidth < 700 ? 1 : 3}
         onReachEnd={handleSwiperReachEnd}>
         {topTrending &&
           topTrending.map((item, index) => (

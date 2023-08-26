@@ -7,11 +7,21 @@
   justify-content: center;
   align-items: center;
 
+  @media screen and (max-width: 550px) {
+    margin-top: 60px;
+    height: 400px;
+  }
+
   &--video {
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: 0;
+
+    @media screen and (max-width: 550px) {
+      width: 90%;
+      height: 50%;
+    }
   }
 
   &--block {
@@ -24,6 +34,10 @@
       margin-bottom: 5px;
       font-size: 24px;
       font-weight: 100;
+
+      @media screen and (max-width: 550px) {
+        font-size: 14px;
+      }
     }
 
     &-title {
@@ -31,16 +45,28 @@
       font-size: 42px;
       font-weight: 800;
       color: white;
+
+      @media screen and (max-width: 550px) {
+        font-size: 20px;
+      }
     }
 
     &-subtitle {
       margin-bottom: 10px;
       font-size: 28px;
+
+      @media screen and (max-width: 550px) {
+        font-size: 18px;
+      }
     }
 
     &-rating {
       margin-bottom: 20px;
       font-size: 24px;
+
+      @media screen and (max-width: 550px) {
+        font-size: 12px;
+      }
     }
 
     &-btn {
@@ -53,6 +79,10 @@
       border: 2.5px solid white;
       border-radius: 10px;
       cursor: pointer;
+
+      @media screen and (max-width: 550px) {
+        padding: 2px 5px;
+      }
     }
   }
 }

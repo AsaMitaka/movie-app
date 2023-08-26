@@ -27,7 +27,7 @@ const SectionTvCarausel = () => {
       <Swiper
         className="main__section--carausel-block"
         spaceBetween={20}
-        slidesPerView={6}
+        slidesPerView={window.innerWidth < 700 ? 1 : 6}
         onReachEnd={handleSwiperReachEnd}>
         {popularTvShow.map((item, index) => (
           <SwiperSlide key={index}>

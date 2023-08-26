@@ -27,7 +27,7 @@ const SectionCarausel = () => {
       <Swiper
         className="main__section--carausel-block"
         spaceBetween={20}
-        slidesPerView={6}
+        slidesPerView={window.innerWidth < 700 ? 1 : 6}
         onReachEnd={handleSwiperReachEnd}>
         {popularMovies &&
           popularMovies.map((item, index) => (

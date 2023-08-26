@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 
 const BigElement = ({ item }) => {
-  console.log(item);
-
   return (
     <div className="bigelement">
       <div className="bigelement__block">
