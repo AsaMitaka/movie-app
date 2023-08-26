@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 
 const BigElement = ({ item }) => {
+  console.log(item);
+
   return (
     <div className="bigelement">
       <div className="bigelement__block">
@@ -10,8 +12,12 @@ const BigElement = ({ item }) => {
           className="bigelement__block--img"
         />
       </div>
-      <Link to={`/${item.media_type}/${item.id}`} className="bigelement__subblock">
-        <h1 className="bigelement__subblock--title">{item.original_title}</h1>
+      <Link
+        to={item.media_type === 'tv' ? `/show/${item.id}` : `/${item.media_type}/${item.id}`}
+        className="bigelement__subblock">
+        <h1 className="bigelement__subblock--title">
+          {item.media_type === 'tv' ? item.name : item.original_title}
+        </h1>
         <h2 className="bigelement__subblock--subtitle">Drama</h2>
       </Link>
     </div>

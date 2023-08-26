@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Footer from '../components/Footer';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import axios from '../services/api';
 
 const TvShow = () => {
@@ -21,8 +22,6 @@ const TvShow = () => {
 
     getData();
   }, []);
-
-  console.log(data);
 
   return (
     <div className="wrapper">
@@ -48,51 +47,25 @@ const TvShow = () => {
                 <p className="main__show--block-left--description">{data?.overview}</p>
                 <p className="main__show--block-left--studio">
                   <span className="main__show--block-left--studio-span">STUDIO:</span>
-                  {data.production_companies.map((item) => (
+                  {data?.production_companies.map((item) => (
                     <>{item.name}</>
                   ))}
                 </p>
                 <button className="main__show--block-left--btn">Watch</button>
               </div>
               <div className="main__show--block-right">
-                <div className="main__show--block-right--title">Cast</div>
-                <div className="main__show--block-right--block">
-                  <div className="actor">
-                    <img src="" alt="" className="actor--img" />
-                    <div className="actor--block">
-                      <div className="actor--block-name">John Crammer</div>
-                      <div className="actor--block-subinfo">voice</div>
-                    </div>
-                  </div>
-                  <div className="actor">
-                    <img src="" alt="" className="actor--img" />
-                    <div className="actor--block">
-                      <div className="actor--block-name">John Crammer</div>
-                      <div className="actor--block-subinfo">voice</div>
-                    </div>
-                  </div>
-                  <div className="actor">
-                    <img src="" alt="" className="actor--img" />
-                    <div className="actor--block">
-                      <div className="actor--block-name">John Crammer</div>
-                      <div className="actor--block-subinfo">voice</div>
-                    </div>
-                  </div>
-                  <div className="actor">
-                    <img src="" alt="" className="actor--img" />
-                    <div className="actor--block">
-                      <div className="actor--block-name">John Crammer</div>
-                      <div className="actor--block-subinfo">voice</div>
-                    </div>
-                  </div>
-                  <div className="actor">
-                    <img src="" alt="" className="actor--img" />
-                    <div className="actor--block">
-                      <div className="actor--block-name">John Crammer</div>
-                      <div className="actor--block-subinfo">voice</div>
-                    </div>
-                  </div>
-                </div>
+                <div className="main__show--block-right--title">Seasons</div>
+                <Swiper
+                  className="main__show--block-right--block"
+                  spaceBetween={30}
+                  slidesPerView={4}>
+                  {data &&
+                    data?.seasons.map((item) => (
+                      <SwiperSlide key={item.id}>
+                        <Seasons item={item} />
+                      </SwiperSlide>
+                    ))}
+                </Swiper>
               </div>
             </div>
           </section>
@@ -104,3 +77,21 @@ const TvShow = () => {
 };
 
 export default TvShow;
+
+const Seasons = ({ item }) => {
+  console.log(item);
+
+  return (
+    <div className="episode">
+      <img
+        src={`https://image.tmdb.org/t/p/original/${item?.poster_path}`}
+        alt=""
+        className="episode--img"
+      />
+      <div className="episode--block">
+        <div className="episode--block-title">{item?.name}</div>
+        <div className="episode--block-descr">{item?.overview.slice(0, 25) + '...'}</div>
+      </div>
+    </div>
+  );
+};

@@ -20,6 +20,7 @@ const MovieShow = () => {
 
     getData();
   }, []);
+  console.log(data);
 
   return (
     <div className="wrapper">
@@ -53,46 +54,6 @@ const MovieShow = () => {
                     ))}
                   </p>
                   <button className="main__show--block-left--btn">Watch</button>
-                </div>
-                <div className="main__show--block-right">
-                  <div className="main__show--block-right--title">Cast</div>
-                  <div className="main__show--block-right--block">
-                    <div className="actor">
-                      <img src="" alt="" className="actor--img" />
-                      <div className="actor--block">
-                        <div className="actor--block-name">John Crammer</div>
-                        <div className="actor--block-subinfo">voice</div>
-                      </div>
-                    </div>
-                    <div className="actor">
-                      <img src="" alt="" className="actor--img" />
-                      <div className="actor--block">
-                        <div className="actor--block-name">John Crammer</div>
-                        <div className="actor--block-subinfo">voice</div>
-                      </div>
-                    </div>
-                    <div className="actor">
-                      <img src="" alt="" className="actor--img" />
-                      <div className="actor--block">
-                        <div className="actor--block-name">John Crammer</div>
-                        <div className="actor--block-subinfo">voice</div>
-                      </div>
-                    </div>
-                    <div className="actor">
-                      <img src="" alt="" className="actor--img" />
-                      <div className="actor--block">
-                        <div className="actor--block-name">John Crammer</div>
-                        <div className="actor--block-subinfo">voice</div>
-                      </div>
-                    </div>
-                    <div className="actor">
-                      <img src="" alt="" className="actor--img" />
-                      <div className="actor--block">
-                        <div className="actor--block-name">John Crammer</div>
-                        <div className="actor--block-subinfo">voice</div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </section>

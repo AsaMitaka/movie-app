@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 
 const SmallTvElement = ({ item }) => {
-  console.log(item);
-
   return (
     <div className="smallelement">
       <img
