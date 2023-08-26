@@ -7,7 +7,6 @@ import SmallTvElement from './SmallTvElement';
 const SectionTvCarausel = () => {
   const dispatch = useDispatch();
   const popularTvShow = useSelector((state) => state.popularTvShow.items);
-  console.log(popularTvShow);
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleSwiperReachEnd = async () => {

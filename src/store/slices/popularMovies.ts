@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../services/api';
 
-export const fetchPopularMovies = createAsyncThunk('fetch/popularMovies', async () => {
-  const { data } = await axios.get('/trending/movie/week');
+export const fetchPopularMovies = createAsyncThunk('fetch/popularMovies', async (page = 1) => {
+  const { data } = await axios.get(`/trending/movie/week?page=${page}`);
 
   return data;
 });
@@ -18,13 +18,13 @@ const popularMoviesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchPopularMovies.pending, (state, action) => {
-      state.items = [];
+      // state.items = [];
       state.status = 'loading';
     });
     builder.addCase(fetchPopularMovies.fulfilled, (state, action) => {
-      const results = action.payload.results.slice(10);
+      const results = action.payload.results;
 
-      state.items = results;
+      state.items = [...state.items, ...results];
       state.status = 'loaded';
     });
     builder.addCase(fetchPopularMovies.rejected, (state, action) => {
