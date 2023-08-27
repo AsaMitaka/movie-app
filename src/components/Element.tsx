@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { ElementProps } from '../types/trending';
 
 const Element: React.FC<ElementProps> = ({ item }) => {
+  console.log(item);
+
   return (
     <div className="element">
       <img
@@ -15,7 +17,7 @@ const Element: React.FC<ElementProps> = ({ item }) => {
         <div className="element__block--title">
           {item.media_type === 'tv' ? item?.name : item.original_title}
         </div>
-        <div className="element__block--subtitle">Drama</div>
+        <div className="element__block--subtitle">⭐ {item.vote_average}</div>
       </Link>
     </div>
   );
