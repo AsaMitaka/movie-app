@@ -4,24 +4,26 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+@vitejs/plugin-react uses Babel for Fast Refresh
+@vitejs/plugin-react-swc uses SWC for Fast Refresh
 
-## Expanding the ESLint configuration
+## How to Use
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Clone the Repository: Start by cloning this repository to your local machine using git clone https://github.com/your-username/your-project-name.git.
+- Navigate to Project Directory: Move into the project directory using cd your-project-name.
+- Install Dependencies: Run npm install to install all the required dependencies.
+- Start Development Server: Launch the development server using npm run dev. This will open the project in your default browser and enable HMR for real-time updates during development.
+- Build for Production: When ready to deploy, build a production-ready version of the app using npm run build. The optimized files will be available in the dist folder.
 
-- Configure the top-level `parserOptions` property like this:
+## Project Structure
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+The project follows a structured organization to maintain code clarity and scalability:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- src: Contains the main source code of the application.
+- components: Houses reusable UI components.
+- pages: Includes different pages/routes of the application.
+- store: Manages the Redux store and related logic.
+- services: Holds services for making API calls or handling external interactions.
+- utils: Contains utility functions and helper modules.
+- types: Contains TypeScript type definitions for the project.
+- styles: Includes SCSS files for styling the application.
