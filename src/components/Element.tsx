@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom';
 import { ElementProps } from '../types/trending';
 
 const Element: React.FC<ElementProps> = ({ item }) => {
-  console.log(item.name, item.media_type);
-
   return (
     <div className="element">
       <img
