@@ -1,12 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../services/api';
-import { Trending } from '../../types/trending';
+import { ApiResponseType, Trending } from '../../types/trending';
 
-export const fetchTopTrending = createAsyncThunk('fetch/topTrending', async (page: number = 1) => {
-  const { data } = await axios.get(`/trending/all/week?page=${page}`);
+export const fetchTopTrending = createAsyncThunk<ApiResponseType, number>(
+  'fetch/topTrending',
+  async (page: number = 1) => {
+    const { data } = await axios.get(`/trending/all/week?page=${page}`);
 
-  return data;
-});
+    return data;
+  },
+);
 
 const initialState: Trending = {
   items: [],

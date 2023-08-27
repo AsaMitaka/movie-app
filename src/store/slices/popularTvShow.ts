@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../services/api';
-import { PopularTvShowState } from '../../types/tvShowElement';
+import { PopularTvShowState, ApiResponseType } from '../../types/tvShowElement';
 
-export const fetchPopularTvShow = createAsyncThunk(
+export const fetchPopularTvShow = createAsyncThunk<ApiResponseType, number>(
   'fetch/popularTvShow',
   async (page: number = 1) => {
     const { data } = await axios.get(`trending/tv/week?page=${page}`);

@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../services/api';
-import { MovieShowState } from '../../types/movieElement';
+import { MovieShowState, ApiResponseType } from '../../types/movieElement';
 
-export const fetchPopularMovies = createAsyncThunk(
+export const fetchPopularMovies = createAsyncThunk<ApiResponseType, number>(
   'fetch/popularMovies',
   async (page: number = 1) => {
     const { data } = await axios.get(`/trending/movie/week?page=${page}`);
