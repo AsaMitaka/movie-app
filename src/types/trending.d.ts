@@ -1,7 +1,9 @@
 import { MovieType } from './movieElement';
 import { TvShowType } from './tvShowElement';
 
-type TrendingItem = MovieType | TvShowType;
+type ApiResponseType = {
+  results: TrendingItem[];
+};
 
 interface ElementProps {
   item: TvShowType | MovieType;
@@ -12,4 +14,6 @@ interface Trending {
   status: 'loading' | 'loaded' | 'rejected';
 }
 
-export { ElementProps, TrendingItem, Trending };
+type TrendingItem = MovieType | TvShowType;
+
+export { ApiResponseType, ElementProps, Trending, TrendingItem };

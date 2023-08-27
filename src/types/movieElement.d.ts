@@ -1,13 +1,10 @@
+type ApiResponseType = {
+  results: MovieType[];
+};
+
 type Genre = {
   id: number;
   name: string;
-};
-
-type ProductionCompanies = {
-  id: number;
-  logo_path: string;
-  name: string;
-  origin_country: string;
 };
 
 type MovieType = {
@@ -36,4 +33,11 @@ interface MovieShowState {
   status: 'loading' | 'loaded' | 'rejected';
 }
 
-export { MovieType, MovieShowState };
+type ProductionCompanies = {
+  id: number;
+  logo_path: string;
+  name: string;
+  origin_country: string;
+};
+
+export { ApiResponseType, MovieType, MovieShowState };
