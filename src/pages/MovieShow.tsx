@@ -25,8 +25,6 @@ const MovieShow: React.FC = () => {
     getData();
   }, []);
 
-  console.log(data?.genres, data?.production_companies);
-
   return (
     <div className="wrapper">
       <Header />
@@ -55,7 +53,7 @@ const MovieShow: React.FC = () => {
                   <p className="main__show--block-left--studio">
                     <span className="main__show--block-left--studio-span">STUDIO:</span>
                     {data?.production_companies.map((item) => (
-                      <p>{item.name}</p>
+                      <span key={item.id}>{item.name}</span>
                     ))}
                   </p>
                   <button className="main__show--block-left--btn">Watch</button>
