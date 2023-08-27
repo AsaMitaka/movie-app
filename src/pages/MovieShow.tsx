@@ -25,6 +25,8 @@ const MovieShow: React.FC = () => {
     getData();
   }, []);
 
+  console.log(data?.genres, data?.production_companies);
+
   return (
     <div className="wrapper">
       <Header />
@@ -44,8 +46,8 @@ const MovieShow: React.FC = () => {
                   <p className="main__show--block-left--subinfo">2023 M 2h 30m</p>
                   <h1 className="main__show--block-left--title">{data?.title}</h1>
                   <div className="main__show--block-left--subtitle">
-                    {data?.genres.map((item) => (
-                      <span>{item.name} </span>
+                    {data?.genres?.map((item, index) => (
+                      <span key={`${item.name}__${index}`}>{item.name} </span>
                     ))}
                   </div>
                   <p className="main__show--block-left--rating">⭐ {data?.vote_average}</p>
