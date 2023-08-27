@@ -5,6 +5,7 @@ type TvShowType = {
   genres_ids: number[];
   id: number;
   media_type: string;
+  name: string;
   origin_country: string[];
   original_language: string;
   original_title: string;

@@ -4,6 +4,7 @@ type MovieType = {
   genres_ids: number[];
   id: number;
   media_type: string;
+  name: string;
   original_language: string;
   original_title: string;
   overview: string;
