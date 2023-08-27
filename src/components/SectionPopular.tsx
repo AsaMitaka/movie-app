@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchTopTrending } from '../store/slices/topTrending';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { AppDispatch, RootState } from '../store/store';
 import Element from './Element';
 
 const SectionPopular = () => {
-  const dispatch = useDispatch();
-  const topTrending = useSelector((state) => state.topTrending.items);
+  const dispatch = useDispatch<AppDispatch>();
+  const topTrending = useSelector((state: RootState) => state.topTrending.items);
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleSwiperReachEnd = async () => {
@@ -18,7 +19,7 @@ const SectionPopular = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchTopTrending());
+    dispatch(fetchTopTrending(1));
   }, []);
 
   return (
@@ -46,7 +47,7 @@ const SectionPopular = () => {
           onReachEnd={handleSwiperReachEnd}>
           {topTrending &&
             topTrending.map((item, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={`${item.id}__${item.name}__${index}`}>
                 <Element item={item} />
               </SwiperSlide>
             ))}

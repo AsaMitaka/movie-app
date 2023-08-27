@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPopularMovies } from '../store/slices/popularMovies';
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { AppDispatch, RootState } from '../store/store';
 import Element from './Element';
 
 const SectionCarausel = () => {
-  const dispatch = useDispatch();
-  const popularMovies = useSelector((state) => state.popularMovies.items);
+  const dispatch = useDispatch<AppDispatch>();
+  const popularMovies = useSelector((state: RootState) => state.popularMovies.items);
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleSwiperReachEnd = async () => {
@@ -18,7 +19,7 @@ const SectionCarausel = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchPopularMovies());
+    dispatch(fetchPopularMovies(1));
   }, []);
 
   return (
@@ -45,7 +46,7 @@ const SectionCarausel = () => {
         onReachEnd={handleSwiperReachEnd}>
         {popularMovies &&
           popularMovies.map((item, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={`${item.id}__${item.title}__${index}`}>
               <Element item={item} />
             </SwiperSlide>
           ))}

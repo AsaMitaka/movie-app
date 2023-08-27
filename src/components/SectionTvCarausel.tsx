@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchPopularTvShow } from '../store/slices/popularTvShow';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { AppDispatch, RootState } from '../store/store';
 import Element from './Element';
 
 const SectionTvCarausel = () => {
-  const dispatch = useDispatch();
-  const popularTvShow = useSelector((state) => state.popularTvShow.items);
+  const dispatch = useDispatch<AppDispatch>();
+  const popularTvShow = useSelector((state: RootState) => state.popularTvShow.items);
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleSwiperReachEnd = async () => {
@@ -18,7 +19,7 @@ const SectionTvCarausel = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchPopularTvShow());
+    dispatch(fetchPopularTvShow(1));
   }, []);
 
   return (
@@ -44,7 +45,7 @@ const SectionTvCarausel = () => {
         }}
         onReachEnd={handleSwiperReachEnd}>
         {popularTvShow.map((item, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={`${item.id}__${item.name}__${index}`}>
             <Element item={item} />
           </SwiperSlide>
         ))}
